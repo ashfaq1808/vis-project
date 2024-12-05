@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    svg {
+        width: 960px;
+        height: 600px;
+        background-color: #f0f0f0;
+        margin: 0 auto;
+        display: block;
+    }
+    .state-borders {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+    .state {
+        stroke: #000;
+        stroke-width: 0.5px;
+    }
+    #tooltip {
+        position: absolute;
+        display: none;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+    #heading_crime{
+        margin-top: 30px;
+
+        text-align: center;
+    }
+    .dropdowns-container {
+        display: flex; /* Use flexbox for alignment */
+        justify-content: center; /* Center the dropdowns horizontally */
+        align-items: center; /* Align the dropdowns vertically */
+        gap: 20px; /* Add spacing between the two dropdowns */
+        margin: 20px auto; /* Center the container itself on the page */
+        width: fit-content; /* Ensure the container only takes the width of its content */
+    }
+
+.dropdowns {
+    font-size: 14px; /* Smaller font size */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 5px; /* Round corners */
+    margin: 5px; /* Add spacing around the dropdown itself */
+    width: 250px; /* Ensure a consistent width */
+    flex: none; /* Prevent flexbox from stretching the dropdowns */
+}
+
+.dropdown-menu {
+    max-height: 200px; /* Set a maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds max height */
+    position: absolute; /* Ensure it opens below the button */
+    z-index: 1050; /* Keep it on top of other elements */
+}
+
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+.button_below-container {
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 20vh; /* Make the container take the full viewport height */
+    margin: 0; /* Remove default margins */
+    gap: 20px;
+}
+.crime_wise_rates {
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.btn-outline-danger {
+    width: 300px; /* Ensure consistent button width */
+    margin: 0; /* Reset margins to avoid misalignment */
+}
+</style>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Crime Data Map</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+             <h1 id = "heading_crime">Crime Cases in United States</h1>
+             <div class="dropdowns-container">
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="yearDropDownButton"
+                    >
+                        2019
+                    </button>
+                    <div class="dropdown-menu" id="yearDropdown">
+                    </div>
+                </div>
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="typeDropDownButton"
+                    >
+                        All Crimes
+                    </button>
+                    <div class="dropdown-menu" id="typeDropDown">
+                    </div>
+                </div>
+            </div>     
+            <div class="dropdown-menu" id="crimeTypeDropDown">
+            </div>
+            <div id="tooltip" style="position: absolute; background: #fff; border: 1px solid #ccc; padding: 5px; display: none; margin-top: 20px;"></div>
+            <svg width="960" height="600" id = "HeatMapImage"></svg>
+            <script src="https://d3js.org/d3.v7.min.js"></script>
+            <script src="https://unpkg.com/topojson@3"></script>
+            <script src="js/demo/chart-area-demo.js"></script>
+            <div class="button_below-container">
+                <a type="button" href="charts.html" class="btn btn-outline-danger button_below">Compare State Wise Crime Rates</a>
+                <a type="button" href="compare_crimes.html" class="btn btn-outline-danger button_below">Compare Yearly Crime Rates</a>
+            </div>
+        </div>
+    </div>
+    
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+</body>
+
+</html>

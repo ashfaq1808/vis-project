@@ -1,0 +1,27 @@
+{
+  "name": "group-project-crime-data-visualization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@radix-ui/react-select": "^2.1.2",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "plotly.js": "^2.35.2",
+    "react": "^18.3.1",
+    "react-plotly.js": "^2.6.0",
+    "recharts": "^2.13.0"
+  }
+}

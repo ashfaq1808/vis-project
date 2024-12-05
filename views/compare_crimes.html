@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .comparison-container {
+    display: flex;
+    justify-content: space-between; /* Space panels side by side */
+    align-items: flex-start; /* Align panels at the top */
+    gap: 20px; /* Add space between panels */
+    margin: 20px; /* Add spacing around the container */
+}
+
+.comparison-panel {
+    display: flex;
+    flex-direction: column; /* Stack dropdowns and graph vertically */
+    align-items: center; /* Center content horizontally */
+    width: 45%; /* Each panel takes up 45% of the width */
+    border: 1px solid #ccc; /* Optional: Add a border for separation */
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light background for panels */
+}
+
+.dropdowns-container {
+    display: flex;
+    flex-direction: column; /* Stack dropdowns vertically */
+    gap: 10px; /* Add spacing between dropdowns */
+    width: 100%;
+}
+
+.dropdowns {
+    width: 100%; /* Ensure dropdowns take up the full width of the panel */
+}
+
+/* Match dropdown menu width with button */
+.dropdown-menu {
+    max-height: 200px; /* Set a maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling when the content exceeds max height */
+    width: 100%; /* Make the dropdown width match the button */
+    box-sizing: border-box; /* Ensure padding and borders don't affect width */
+    text-align: left; /* Ensure proper alignment for items */
+}
+
+/* Optional: Style the scrollbar for modern browsers */
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px; /* Set scrollbar width */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #ccc; /* Set thumb color */
+    border-radius: 4px; /* Rounded scrollbar thumb */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Darker color on hover */
+}
+
+
+.graph-panel {
+    margin-top: 20px; /* Add space above the graph */
+    width: 100%; /* Graph takes up full width of the panel */
+    height: 300px; /* Set a consistent height for the graphs */
+    background-color: #fff; /* Placeholder background for graph */
+    border: 1px solid #ddd; /* Optional: Border for the graph area */
+    border-radius: 10px; /* Rounded edges for the graph area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px; /* Placeholder font size */
+    color: #aaa; /* Placeholder text color */
+}
+#heading_crime{
+    margin-top: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+</style>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Crime Rates USA</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1 id="heading_crime">Compare Types of Crimes</h1>
+    <div class="comparison-container">
+        <div class="comparison-panel">
+            <div class="dropdowns-container">
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="crimeTypeDropDownButtonLeft"
+                    >
+                        Type of Crime
+                    </button>
+                    <div class="dropdown-menu" id="crimeTypeDropDownLeft"></div>
+                </div>
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="graphTypeDropdownLeft"
+                    >
+                        Select Graph Type
+                    </button>
+                    <div class="dropdown-menu" id="graphTypeDropdownMenuLeft"></div>
+                </div>
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="yearDropDownButtonLeft"
+                    >
+                        2019
+                    </button>
+                    <div class="dropdown-menu" id="yearDropdownLeft">
+                    </div>
+                </div>
+            </div>
+            <canvas id="graphLeft"></canvas> 
+        </div>
+        <div class="comparison-panel">
+            <div class="dropdowns-container">
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="crimeTypeDropDownButtonRight"
+                    >
+                        Type of Crime
+                    </button>
+                    <div class="dropdown-menu" id="crimeTypeDropDownRight"></div>
+                </div>
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="graphTypeDropdownRight"
+                    >
+                        Select Graph Type
+                    </button>
+                    
+                    <div class="dropdown-menu" id="graphTypeDropdownMenuRight"></div>
+                </div>
+                <div class="btn-group dropdowns">
+                    <button
+                        type="button"
+                        class="btn btn-danger dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        id="yearDropDownButtonRight"
+                    >
+                        2019
+                    </button>
+                    <div class="dropdown-menu" id="yearDropdownRight">
+                    </div>
+                </div>
+            </div>
+            <canvas id="graphRight"></canvas>
+        </div>
+    </div>
+</body>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="js/demo/compare_crimes.js"></script>
+</html>
